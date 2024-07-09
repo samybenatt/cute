@@ -14,8 +14,8 @@ import (
 	"time"
 
 	"github.com/ozontech/allure-go/pkg/framework/provider"
-	cuteErrors "github.com/ozontech/cute/errors"
-	"github.com/ozontech/cute/internal/utils"
+	cuteErrors "github.com/samybenatt/cute/errors"
+	"github.com/samybenatt/cute/internal/utils"
 )
 
 const (
@@ -409,11 +409,11 @@ func (it *Test) startTest(ctx context.Context, t internalT) (*http.Response, []e
 
 		// Return results
 		errs = append(errs, afterTestErrs...)
-		
+
 		// If there is no error, we break the loop i.e. the test is successful, so no retry
 		if it.processRetryErrors(len(errs) == 0, t) {
 			break
-		// Else we continue to the next loop and try again (providing currentCount < MaxAttempts)
+			// Else we continue to the next loop and try again (providing currentCount < MaxAttempts)
 		} else {
 			continue
 		}

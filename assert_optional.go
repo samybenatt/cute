@@ -3,7 +3,7 @@ package cute
 import (
 	"net/http"
 
-	"github.com/ozontech/cute/errors"
+	"github.com/samybenatt/cute/errors"
 )
 
 func optionalAssertHeaders(assert AssertHeaders) AssertHeaders {

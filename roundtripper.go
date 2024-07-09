@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/ozontech/allure-go/pkg/allure"
-	cuteErrors "github.com/ozontech/cute/errors"
-	"github.com/ozontech/cute/internal/utils"
+	cuteErrors "github.com/samybenatt/cute/errors"
+	"github.com/samybenatt/cute/internal/utils"
 	"moul.io/http2curl/v2"
 )
 
@@ -85,10 +85,10 @@ func (it *Test) doRequest(t T, baseReq *http.Request) (*http.Response, error) {
 		cuteError.Message = "Request timeout"
 		return nil, cuteError
 	}
-	
+
 	// http client has case wheh it return response and error in one time
 	// we have to check this case
-	if resp == nil {		
+	if resp == nil {
 		if httpErr != nil {
 			return nil, cuteErrors.NewCuteError("[HTTP] Could not do request", httpErr)
 		}

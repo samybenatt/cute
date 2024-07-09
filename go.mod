@@ -1,4 +1,4 @@
-module github.com/ozontech/cute
+module github.com/samybenatt/cute
 
 go 1.21
 

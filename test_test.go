@@ -10,7 +10,7 @@ import (
 	"testing"
 
 	"github.com/ozontech/allure-go/pkg/framework/core/common"
-	"github.com/ozontech/cute/internal/utils"
+	"github.com/samybenatt/cute/internal/utils"
 	"github.com/stretchr/testify/require"
 )
 

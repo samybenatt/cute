@@ -12,7 +12,7 @@ import (
 
 	"github.com/ozontech/allure-go/pkg/framework/provider"
 	"github.com/ozontech/allure-go/pkg/framework/runner"
-	"github.com/ozontech/cute"
+	"github.com/samybenatt/cute"
 )
 
 func TestInsideStep(t *testing.T) {

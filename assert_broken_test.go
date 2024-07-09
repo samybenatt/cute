@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"testing"
 
-	cuteErrors "github.com/ozontech/cute/errors"
+	cuteErrors "github.com/samybenatt/cute/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

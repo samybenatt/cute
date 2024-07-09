@@ -7,11 +7,11 @@ import (
 	"time"
 
 	"github.com/ozontech/allure-go/pkg/framework/provider"
-	"github.com/ozontech/cute"
-	"github.com/ozontech/cute/asserts/headers"
-	"github.com/ozontech/cute/asserts/json"
-	cuteErrors "github.com/ozontech/cute/errors"
-	"github.com/ozontech/cute/examples"
+	"github.com/samybenatt/cute"
+	"github.com/samybenatt/cute/asserts/headers"
+	"github.com/samybenatt/cute/asserts/json"
+	cuteErrors "github.com/samybenatt/cute/errors"
+	"github.com/samybenatt/cute/examples"
 )
 
 func (i *ExampleSuite) Test_OneStep_Errors(t provider.T) {
