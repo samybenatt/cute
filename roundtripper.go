@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"moul.io/http2curl/v2"
 	"net/http"
 	"strings"
 	"time"
@@ -12,7 +13,6 @@ import (
 	"github.com/ozontech/allure-go/pkg/allure"
 	cuteErrors "github.com/samybenatt/cute/errors"
 	"github.com/samybenatt/cute/internal/utils"
-	"moul.io/http2curl/v2"
 )
 
 func (it *Test) makeRequest(t internalT, req *http.Request) (*http.Response, []error) {
@@ -75,13 +75,16 @@ func (it *Test) doRequest(t T, baseReq *http.Request) (*http.Response, error) {
 	resp, httpErr := it.httpClient.Do(req)
 	// if the timeout is triggered, we properly log the timeout error on allure and in traces
 	if errors.Is(httpErr, context.DeadlineExceeded) {
-		curl, err := http2curl.GetCurlCommand(req)
+		curl, err := http2curl.GetCurlCommand(baseReq)
 		if err != nil {
 			return nil, err
 		}
-		it.Error(t, "Request timeout Curl: %v", curl)
+
+		// Log as info level to cope with retries, the returned cuteError will then be processed ultimately
+		it.Info(t, "Request timeout Curl: %s", curl.String())
+
 		cuteError := cuteErrors.NewCuteError("[HTTP] Request timeout", httpErr)
-		cuteError.Fields = map[string]interface{}{"curl": curl}
+		cuteError.Fields = map[string]interface{}{"curl": curl.String()}
 		cuteError.Message = "Request timeout"
 		return nil, cuteError
 	}
